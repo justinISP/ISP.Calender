@@ -3,7 +3,8 @@
     "type": "neos-package",
     "name": "isp/calender",
     "require": {
-        "neos/flow": "*"
+        "neos/flow": "*",
+        "flowpack/listable": "*"
     },
     "autoload": {
         "psr-4": {
