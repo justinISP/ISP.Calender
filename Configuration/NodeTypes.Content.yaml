@@ -1,0 +1,8 @@
+'ISP.Calender:MonthList':
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  ui:
+    label: 'Monatsliste'
+    icon: icon-list
+    inlineEditable: true
+    group: 'general'

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace fusion=Neos\Fusion\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<html>
+<head>
+	<f:section name="stylesheets">
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Styles/style.css', package: 'ISP.Calender')}" media="all" />
+	</f:section>
+	<f:section name="headScripts">
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="..." name="keywords">
+		<meta content="..." name="description">
+	</f:section>
+</head>
+<body>
+<f:section name="body">
+		<div class="main-calendar">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-8">
+						<div class="row">
+
+							<!-- Event Date -->
+							<div class="KalenderDatum">
+								<div class="icon">
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+								</div>
+								<div class="icon-text">
+									<p>{eventDate -> f:format.date(forceLocale: true, cldrFormat: 'EE')}, <f:format.date date="{eventDate}" format="d. " />{eventDate -> f:format.date(forceLocale: true, cldrFormat: 'MMMM')}<f:format.date date="{eventDate}" format=" Y" /><f:if condition="!{isWholeDay}">, <f:format.date date="{eventDate}" format=" H:i" /> Uhr</f:if></p>
+									<f:if condition="{eventEndDate}">
+									  <p>- {eventEndDate -> f:format.date(forceLocale: true, cldrFormat: 'EE')}, <f:format.date date="{eventEndDate}" format=" d. " />{eventEndDate -> f:format.date(forceLocale: true, cldrFormat: 'MMMM')}<f:format.date date="{eventEndDate}" format=" Y, H:i" /> Uhr</p>
+									</f:if>
+								</div>
+							</div>
+							<div class="KalenderTitel">
+								<!-- Event Title -->
+								<neos:contentElement.wrap>
+									<neos:contentElement.editable property="title" tag="h1"/>
+								</neos:contentElement.wrap>
+							</div>
+							<div class="KalenderLocation">
+								<div class="icon">
+									<i class="fa fa-map-marker" aria-hidden="true"></i>
+								</div>
+								<div class="icon-text">
+									<neos:contentElement.wrap>
+										<neos:contentElement.editable property="place" tag="p"/>
+									</neos:contentElement.wrap>
+								</div>
+							</div>
+							<div class="social">Teilen:
+								<a target="_blank" aria-label="Teilen auf Twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdeveloper.twitter.com%2F&ref_src=twsrc%5Etfw&tw_p=tweetbutton&url={linkUri}"><i class="fa-brands fa-twitter"></i></a> |
+								<a target="_blank" aria-label="Teilen auf Whatsapp" href="https://api.whatsapp.com/send/?text={linkUri}&type=custom_url&app_absent=0"><i class="fa-brands fa-whatsapp"></i></a> |
+								<a target="_blank" aria-label="Teilen auf Facebook" href="https://www.facebook.com/dialog/share?app_id=87741124305&href={linkUri}/&display=popup"><i class="fa-brands fa-facebook"></i></a> |
+								<a href="#" aria-label="Link kopieren" onclick="copyToClipboard()"><i class="fa-solid fa-link"></i></a>
+							</div>
+							<!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
+							<div class="KalenderContent">
+								{content.main -> f:format.raw()}
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 stickyrechts">
+						<div class="row">
+							<div class="KalenderBild">
+								<a href="{neos.media:uri.image(image: previewPicture, maximumWidth: 1600)}" rel ="example_group"  class="lightbox" data-fancybox="lightbox" data-fancybox-group="lightboxgroup">
+									<media:image class="img-fluid" image="{previewPicture}" maximumWidth="600" allowUpScaling="TRUE" alt="{title}" />
+								</a>
+							</div>
+							<div class="event-info">
+								{content.Information -> f:format.raw()}
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12">
+						<div class="linkback">
+							<a href="javascript:history.back()">
+								<div class="waviy">
+									[ <span style="--i:1">&larr;</span> <span style="--i:2">z</span><span style="--i:3">u</span><span style="--i:4">r</span><span style="--i:5">&uuml;</span><span style="--i:6">c</span><span style="--i:7">k</span> ]
+								</div>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				{footer -> f:format.raw()}
+			</div>
+		</div>
+	</div>
+
+	<a href="javascript:history.back()" class="back-to-site"><i class="fa fa-chevron-left"></i></a>
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+</f:section>
+<f:section name="bodyScripts">
+</f:section>
+</body>
+</html>

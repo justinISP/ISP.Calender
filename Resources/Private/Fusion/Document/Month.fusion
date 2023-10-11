@@ -1,0 +1,126 @@
+prototype(ISP.Calender:Month) < prototype(Neos.Neos:Page) {
+
+    head {
+          stylesheets.site = Neos.Fusion:Template {
+              templatePath = 'resource://ISP.Calender/Private/Templates/Page/Month.html'
+              sectionName = 'stylesheets'
+          }
+  
+          javascripts.site = Neos.Fusion:Template {
+              templatePath = 'resource://ISP.Calender/Private/Templates/Page/Month.html'
+              sectionName = 'headScripts'
+          }    
+    }
+  
+    body {
+  
+        templatePath = 'resource://ISP.Calender/Private/Templates/Page/Month.html'
+
+        docTitle = ${q(documentNode).property('title')}
+
+        dayCountCase = Neos.Fusion:Case{
+          januar {
+                  condition = ${q(documentNode).property('title') == 'Januar'}
+                  type = 'ISP.Calender:DayRendererA'
+                  #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          februar {
+                  condition = ${q(documentNode).property('title') == 'Februar'}
+                  type = 'ISP.Calender:DayRendererC'
+                  #renderer = ${'28<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          maerz {
+                  condition = ${q(documentNode).property('title') == 'März'}
+                  type = 'ISP.Calender:DayRendererA'
+                  #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          april {
+                  condition = ${q(documentNode).property('title') == 'April'}
+                  type = 'ISP.Calender:DayRendererB'
+                  #renderer = ${'30<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          mai {
+                  condition = ${q(documentNode).property('title') == 'Mai'}
+                  type = 'ISP.Calender:DayRendererA'
+                  #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          juni {
+                  condition = ${q(documentNode).property('title') == 'Juni'}
+                  type = 'ISP.Calender:DayRendererB'
+                  #renderer = ${'30<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          juli {
+                  condition = ${q(documentNode).property('title') == 'Juli'}
+                  type = 'ISP.Calender:DayRendererA'
+                  #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          august {
+                  condition = ${q(documentNode).property('title') == 'August'}
+                  type = 'ISP.Calender:DayRendererA'
+                  #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          september {
+                  condition = ${q(documentNode).property('title') == 'September'}
+                  type = 'ISP.Calender:DayRendererB'
+                  #renderer = ${'30<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          oktober {
+                  condition = ${q(documentNode).property('title') == 'Oktober'}
+                  type = 'ISP.Calender:DayRendererA'
+                 #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          november {
+                  condition = ${q(documentNode).property('title') == 'November'}
+                  type = 'ISP.Calender:DayRendererB'
+                  #renderer = ${'30<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+          dezember {
+                  condition = ${q(documentNode).property('title') == 'Dezember'}
+                  type = 'ISP.Calender:DayRendererA'
+                  #renderer = ${'<a href="#01">01</a><a href="#02">02</a><a href="#03">03</a><a href="#04">04</a><a href="#05">05</a><a href="#06">06</a>'}
+          }
+        }
+  
+        @cache {
+                mode = 'uncached'
+                context {
+                        1 = 'node'
+                        2 = 'site'
+                        3 = 'documentNode'
+                }
+        }
+        months = ${q(site).find(Configuration.setting('ISP.Calender.calenderID')).children().find('[instanceof ISP.Calender:Month]')}
+  
+        #year = ${q(documentNode).find('#c4885ab5-c663-4cc2-ab0b-b85a7f040c12').children().last().property('title')}
+  
+        titleNode = ${q(documentNode).property('title')}
+  
+        yearNodes = ${q(documentNode).parent().find('[instanceof Neos.Neos:Shortcut]')}
+  
+        monthL = Neos.Fusion:Loop{
+  
+          items = ${q(documentNode).find(Configuration.setting('ISP.Calender.calenderID')).children().last().children().property('title')}
+          itemName = 'element'
+          itemRenderer = ${element}
+  
+          }
+  
+        actMonth = ${q(documentNode).property('title')}
+  
+        currMonth = ${Date.formatCldr(Date.now().timestamp, 'MMMM', 'de')}          
+
+        sectionName = 'body'
+  
+        content {
+            main = Neos.Neos:PrimaryContent {
+                nodePath = 'main'
+            }
+  
+        }
+        javascripts.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.Calender/Private/Templates/Page/Month.html'
+            sectionName = 'bodyScripts'
+        }
+    }
+  
+  }

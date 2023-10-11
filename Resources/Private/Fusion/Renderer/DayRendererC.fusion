@@ -1,0 +1,71 @@
+prototype(ISP.Calender:DayRendererC) < prototype(Neos.Neos:Content){
+
+    templatePath = 'resource://ISP.Calender/Private/Templates/Renderer/DayRenderer.html'
+ 
+    months = ${q(site).find(Configuration.setting('ISP.Calender.calenderID')).children().find('[instanceof ISP.Calender:Month]')}
+ 
+    yearAr = ${q(documentNode).parent()}
+ 
+    #months = ${this.yearAr.parent().find('[instanceof ISP.News:CalenderCategories]')}
+ 
+    actMonth = ${q(documentNode).property('title')}
+ 
+    currMonth = ${Date.formatCldr(Date.now().timestamp, 'MMMM', 'de')}
+ 
+    currMonthShort = ${Date.formatCldr(Date.now().timestamp, 'MM', 'de')}
+ 
+    currDay = ${Date.formatCldr(Date.now().timestamp, 'dd', 'de')}
+ 
+    parseMonth = Neos.Fusion:Case{
+      januar {
+              condition = ${q(documentNode).property('title') == 'Januar'}
+              renderer = ${'01'}
+      }
+      februar {
+              condition = ${q(documentNode).property('title') == 'Februar'}
+              renderer = ${'02'}
+      }
+      maerz {
+              condition = ${q(documentNode).property('title') == 'März'}
+              renderer = ${'03'}
+      }
+      april {
+              condition = ${q(documentNode).property('title') == 'April'}
+              renderer = ${'04'}
+      }
+      mai {
+              condition = ${q(documentNode).property('title') == 'Mai'}
+              renderer = ${'05'}
+      }
+      juni {
+              condition = ${q(documentNode).property('title') == 'Juni'}
+              renderer = ${'06'}
+      }
+      juli {
+              condition = ${q(documentNode).property('title') == 'Juli'}
+              renderer = ${'07'}
+      }
+      august {
+              condition = ${q(documentNode).property('title') == 'August'}
+              renderer = ${'08'}
+      }
+      september {
+              condition = ${q(documentNode).property('title') == 'September'}
+              renderer = ${'09'}
+      }
+      oktober {
+              condition = ${q(documentNode).property('title') == 'Oktober'}
+              renderer = ${'10'}
+      }
+      november {
+              condition = ${q(documentNode).property('title') == 'November'}
+              renderer = ${'11'}
+      }
+      dezember {
+              condition = ${q(documentNode).property('title') == 'Dezember'}
+              renderer = ${'12'}
+      }
+    }
+  dayLoop = ${['01', '02', '03', '04', '05', '06', '07', '08', '09', 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]}
+ 
+ }

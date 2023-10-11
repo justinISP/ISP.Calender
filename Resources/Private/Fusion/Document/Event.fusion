@@ -1,0 +1,48 @@
+prototype(ISP.Calender:Event) < prototype(Neos.Neos:Page) {
+
+    head {
+          stylesheets.site = Neos.Fusion:Template {
+              templatePath = 'resource://ISP.Calender/Private/Templates/Page/Event.html'
+              sectionName = 'stylesheets'
+          }
+  
+          javascripts.site = Neos.Fusion:Template {
+              templatePath = 'resource://ISP.Calender/Private/Templates/Page/Event.html'
+              sectionName = 'headScripts'
+          }     
+    }
+  
+    body {
+  
+        templatePath = 'resource://ISP.Calender/Private/Templates/Page/Event.html'
+  
+        title = Neos.Neos:Editable {
+            property = 'title'
+            @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+        }
+  
+        linkUri = Neos.Neos:NodeUri {
+          absolute = true
+          node = ${q(documentNode).property('name')}
+        }
+  
+        locLink = ${q(node).property('locLink')}
+        isWholeDay = ${q(node).property('isWholeDay')}
+        previewPicture = ${q(node).property('previewPicture')}
+        eventEndDate = ${q(node).property('eventEndDate')}
+        eventDate = ${q(documentNode).property('eventDate')}
+        categories = ${q(node).property('categories')}
+        place = Neos.Neos:Editable {
+            property = 'place'
+            @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+        }
+  
+        sectionName = 'body'
+
+        javascripts.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.Calender/Private/Templates/Page/Event.html'
+            sectionName = 'bodyScripts'
+        }
+    }
+  
+  }

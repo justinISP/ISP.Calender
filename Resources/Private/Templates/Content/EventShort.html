@@ -1,0 +1,64 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<neos:link.node node="{node}">
+    <f:render section="content"/>
+</neos:link.node>
+
+<f:section name="content">
+    <div id="{eventDate -> f:format.date(forceLocale: true, cldrFormat: 'dd')}" class="KalenderShort">
+        <div class="KalenderDate">
+            <!-- Creation Date -->
+            <div class="event-date-date">
+                <p><f:format.date date="{eventDate}" format="d.m.Y, H:i" /> Uhr</p>
+            </div>
+            <div class="event-date-block">
+                <span class="event-weekday">
+                    <span class="d-none d-sm-block"><strong>{eventDate -> f:format.date(forceLocale: true, cldrFormat: 'EEEE')}</strong></span>
+                </span>
+                <span class="event-day"><strong><f:format.date date="{eventDate}" format="d"/></strong></span>
+                <span class="event-month">
+                    <span class="">{eventDate -> f:format.date(forceLocale: true, cldrFormat: 'MMMM')}</span>
+                </span>
+            </div>
+            <f:if condition="{isWholeDay} == TRUE">
+              <f:then>
+                <div class="event-time">ganztägig</div>
+              </f:then>
+              <f:else>
+                <div class="event-time"><f:format.date date="{eventDate}" format="H:i" /> Uhr</div>
+              </f:else>
+            </f:if>
+        </div>
+        <div class="KalenderBild">
+          <f:if condition="{neos:rendering.inBackend()}">
+           <f:then>
+            <f:if condition="{previewPicture}">
+              <media:image class="img-fluid" image="{previewPicture}" width="250" height="450" allowUpScaling="TRUE" alt="VorschauBild - {title}" />
+            </f:if>
+           </f:then>
+           <f:else>
+             <f:if condition="{previewPicture}">
+                 <neos:link.node node="{node}">
+                     <media:image class="img-fluid" image="{previewPicture}" width="250" height="450" allowUpScaling="TRUE" alt="VorschauBild - {title}" />
+                 </neos:link.node>
+             </f:if>
+           </f:else>
+         </f:if>
+        </div>
+        <div class="KalenderInhalt">
+            <div class="KalenderOrt">
+                <!-- Veranstaltungsort -->
+                <neos:link.node node="{node}">
+                    <p>{place -> f:format.htmlentitiesDecode()}</p>
+                </neos:link.node>
+            </div>
+            <div class="KalenderTitel">
+                <!-- News Title -->
+                <neos:link.node node="{node}">
+                    <h3>{title}</h3>
+                </neos:link.node>
+            </div>
+        </div>
+    </div>
+</f:section>

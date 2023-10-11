@@ -1,0 +1,17 @@
+prototype(ISP.Calender:MonthList) < prototype(Flowpack.Listable:Collection){
+
+    collection = ${q(site).find('[instanceof ISP.Calender:Event]').filterByReference('categories', documentNode).filterByDate('eventDate', Date.today(), '>').sort('eventDate', 'ASC').get()}
+
+    listClass = ${q(documentNode).property('title')}
+    itemClass = 'MyList-item'
+    
+    @cache {
+            mode = 'uncached'
+            context {
+                    1 = 'node'
+                    2 = 'site'
+                    3 = 'documentNode'
+            }
+    }
+    
+    }

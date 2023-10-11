@@ -1,0 +1,89 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace fusion=Neos\Fusion\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<div class="event-calendar cal-month slick-initialized slick-slider">
+    <div class="slick-list draggable">
+        <div class="slick-track">
+          <f:for each="{months}" as="month">
+              <f:if condition="{currMonth} == {month.nodeData.properties.title}">
+                <f:then>
+                  <f:if condition="{actMonth} == {month.nodeData.properties.title}">
+                    <f:then>
+                      <div class="active current item slick-slide slick-current slick-active active item slick-slide slick-active">
+                          <neos:link.node node="node://{month.nodeData.identifier}">
+                              <span class="d-none d-xl-inline-flex">{month.nodeData.properties.title}</span>
+                              <span id="currMonth" class="d-md-inline-flex d-xl-none">{month.nodeData.properties.title}</span>
+                          </neos:link.node>
+                      </div>
+                    </f:then>
+                    <f:else>
+                      <div class="active current item slick-slide slick-current slick-active">
+                          <neos:link.node node="node://{month.nodeData.identifier}">
+                              <span class="d-none d-xl-inline-flex">{month.nodeData.properties.title}</span>
+                              <span class="d-md-inline-flex d-xl-none">{month.nodeData.properties.title}</span>
+                          </neos:link.node>
+                      </div>
+                    </f:else>
+                  </f:if>
+                </f:then>
+                <f:else>
+                  <f:if condition="{actMonth} == {month.nodeData.properties.title}">
+                    <f:then>
+                      <div class="active item slick-slide slick-active">
+                          <neos:link.node node="node://{month.nodeData.identifier}">
+                              <span class="d-none d-xl-inline-flex">{month.nodeData.properties.title}</span>
+                              <span class="d-md-inline-flex d-xl-none">{month.nodeData.properties.title}</span>
+                          </neos:link.node>
+                      </div>
+                    </f:then>
+                    <f:else>
+                      <div>
+                          <neos:link.node node="node://{month.nodeData.identifier}">
+                              <span class="d-none d-xl-inline-flex">{month.nodeData.properties.title}</span>
+                              <span class="d-md-inline-flex d-xl-none">{month.nodeData.properties.title}</span>
+                          </neos:link.node>
+                      </div>
+                    </f:else>
+                  </f:if>
+                </f:else>
+              </f:if>
+          </f:for>
+      </div>
+  </div>
+</div>
+
+<div class="event-calendar cal-day slick-initialized slick-slider" data-day-count="30">
+    <div class="slick-list draggable">
+        <div class="slick-track">
+          <f:for each="{dayLoop}" as="day">
+            <f:if condition="{day} == {currDay} && {parseMonth} == {currMonthShort}">
+              <f:then>
+                <div id="weekDay{day}" class="inactive item current slick-slide slick-current slick-active">
+                  <a id="A{day}" href="#{day}" tabindex="0">
+                    <p class="cal-day-c">{day}</p>
+                    <f:for each="{yearAr}" as="year">
+                      <p class="cal-day-w">
+                        <f:format.date forceLocale="de_DE" cldrFormat="E">{day}.{parseMonth}.{year.nodeData.properties.title}</f:format.date>
+                      </p>
+                    </f:for>
+                  </a>
+                </div>
+              </f:then>
+              <f:else>
+                <div id="weekDay{day}" class="inactive item slick-slide slick-active" >
+                  <a id="A{day}" href="#{day}" tabindex="0">
+                     <p class="cal-day-c">{day}</p>
+                     <f:for each="{yearAr}" as="year">
+                       <p class="cal-day-w">
+                         <f:format.date forceLocale="de_DE" cldrFormat="E">{day}.{parseMonth}.{year.nodeData.properties.title}</f:format.date>
+                       </p>
+                     </f:for>
+                  </a>
+                </div>
+              </f:else>
+            </f:if>
+          </f:for>
+      </div>
+   </div>
+</div>

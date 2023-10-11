@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "isp/calender",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ISP\\Calender\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "ISP.Calender"
+        }
+    }
+}

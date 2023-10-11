@@ -1,0 +1,525 @@
+@import "../Styles/slick.css";
+@import "../Styles/slick-theme.css";
+
+.row{
+    width: 100%;
+}
+
+.col-lg-9 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+ul li.MyList-item {
+    background-image: -webkit-linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9));
+    background-image: -moz-linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9));
+    background-image: -ms-linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9));
+    background-image: -o-linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9));
+    background-image: linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9));
+    display: inline-block;
+    border: 1px solid #aaa;
+    box-shadow: 1px 1px 3px #111;
+    width: 100%;
+    margin: 0 1% 15px 1%;
+    color: #333333;
+}
+
+/**********************************/
+/********** Main News CSS *********/
+/**********************************/
+.main-news,
+.main-calendar {
+    position: relative;
+    width: 100%;
+    /*  padding-top: 20px; */
+    margin-bottom: 30px;
+}
+.main-calendar {
+    margin: 20px 15px;
+}
+.main-news.defaultseite {
+    margin-top: 20px;
+}
+.main-news .col-md-4 {
+    margin-bottom: 30px;
+}
+.main-news .mn-img {
+    position: relative;
+    overflow: hidden;
+}
+.main-news .mn-img img,
+.main-news img{
+    width: 100%;
+    height: auto;
+}
+.main-news .mn-img:hover img {
+    /*   filter: blur(2px);
+       -webkit-filter: blur(2px); */
+}
+.main-news .mn-title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 15px 10px 15px 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, .0), rgba(0, 0, 0, .3), rgba(0, 0, 0, .9));
+    display: flex;
+    align-items: flex-end;
+}
+.main-news .mn-title a {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    transition: .3s;
+}
+.main-news .mn-title a:hover {
+    color: #2E6880;
+}
+.main-news .mn-list {
+    margin-bottom: 30px;
+}
+.main-news .mn-list h2 {
+    margin: 0 15px 10px 0;
+    padding-bottom: 10px;
+}
+.main-news.branchen .mn-list h2 {
+    margin: 0 15px 20px 0;
+    padding-bottom: 10px;
+}
+
+.main-news .mn-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.main-news .mn-list ul li {
+    margin: 0 0 6px 0;
+}
+.main-news.branchen .mn-list ul li {
+    margin: 0 0 12px 10px;
+}
+.main-news .mn-list ul li a {
+    display: block;
+    line-height: 23px;
+}
+.main-news.branchen .mn-list ul li::before {
+    content: '';
+}
+.main-news .bb-content .mn-list ul .neos-nodetypes-text {
+    list-style: circle;
+}
+.main-news .bb-content .mn-list ul li::before .neos-nodetypes-text {
+    display:none;
+}
+.main-news .mn-list ul li a:hover {
+    color: #2E6880;
+}
+.main-news .mn-list .neos-nodetypes-image {
+    padding: 2px 0 10px 0;
+}
+.morenews {
+    padding-top: 35px;
+}
+.social i.fa-solid,
+.social i.fa-brands {
+    font-size: 1.15em;
+    padding: 0 2px;
+}
+@media screen and (max-width:767px) {
+    .main-news,
+    .main-calendar {
+        margin-bottom: 0;
+    }
+    .main-news.defaultseite .tn-newscontent .tn-img .inhalt,
+    .main-news .tn-newscontent .tn-img .inhalt {
+        width: 100%;
+    }
+    .social i.fa-solid,
+    .social i.fa-brands {
+        font-size: 1.45em;
+        padding: 0 5px;
+    }
+}
+
+/*****************************/
+/*** Eventcal Startseite ****/
+/****************************/
+
+.eventcalendar {
+    clear:both;
+    padding-top: 30px;
+}
+.eventcalendar .slick-track {
+ /*   align-items: stretch !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    display: flex !important;
+    box-sizing: border-box;
+  */
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.eventcalendar .slick-slide {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.eventcalendar .KalenderShort {
+    position: relative;
+
+}
+.eventcalendar .KalenderDate {
+    position: absolute;
+    z-index: 8;
+    float: left;
+    width: 100%;
+    padding: 1.475em 0.9375em 2.9375em 0.9375em;
+    border-bottom: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .7), rgba(0, 0, 0, .0));
+}
+.eventcalendar .KalenderDate .event-date-block {
+    margin-bottom: 0.075rem;
+    text-shadow: 2px 2px 1px #000000;
+}
+.eventcalendar .KalenderDate .event-weekday {
+    display: none;
+}
+.eventcalendar .KalenderDate .event-day {
+    position: absolute;
+    top: -7px;
+    left: -2.65rem;
+    font-size: 1.55em;
+}
+.eventcalendar .KalenderDate .event-day:after {
+    content: ".";
+}
+.eventcalendar .KalenderDate .event-month {
+    font-size: 1.05em;
+    line-height: 1.05em;
+}
+.eventcalendar .KalenderDate .event-time {
+    margin-left: 45px;
+    margin-right: 0;
+    margin-bottom: 0.075rem;
+    font-size: 1.05em;
+    text-shadow: 2px 2px 1px #000000;
+}
+.eventcalendar .KalenderBild {
+    position: relative;
+    width: 100%;
+    z-index: 7;
+    height: 225px;
+    overflow:hidden;
+    max-width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .3), rgba(0, 0, 0, .0));
+}
+.eventcalendar .KalenderBild img {
+    z-index:6;
+}
+.eventcalendar .KalenderInhalt {
+    float: left;
+    padding: 0.9375em;
+    width: 100%;
+    min-height: 115px;
+    height: 100%;
+}
+.startseite .eventcalendar .KalenderInhalt {
+    padding: 0.5375em;
+    width: 100%;
+    min-height: 105px;
+    height: 100%;
+}
+.eventcalendar .KalenderInhalt .KalenderOrt {
+    width: 100%;
+}
+.eventcalendar .KalenderInhalt .KalenderOrt p {
+    padding: 0;
+    margin: 0 0 5px 0;
+    color: #222;
+    font-size: 0.95em;
+    line-height: 1.45em;
+}
+.startseite .eventcalendar .KalenderInhalt .KalenderOrt p {
+    color: #fff;
+    font-size: 0.9em;
+}
+.eventcalendar .KalenderInhalt .KalenderTitel {
+    width: 100%;
+}
+.eventcalendar .KalenderInhalt .KalenderTitel h3 {
+    margin: 5px 0 5px 0;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: #3f3f3f 2px 2px 3px;
+    line-height: 1.45em;
+}
+.eventcalendar a .KalenderInhalt .KalenderTitel h3,
+.eventcalendar a {
+    color: #ffffff;
+}
+.eventcalendar a:hover .KalenderInhalt .KalenderDate .event-day,
+.eventcalendar a:hover .KalenderInhalt .KalenderDate .event-month,
+.eventcalendar a:hover .KalenderInhalt .KalenderTitel  h3,
+.eventcalendar a:hover {
+    color: #FF9F2F;
+}
+.main-news .KalenderShort img {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 0;
+}
+.startseite .main-news .KalenderShort img {
+    border-radius: 5px 5px 0 0;
+}
+@media screen and (max-width:767px) {
+    li.MyNewsLatestItem,
+    .startseite li.MyNewsLatestItem,
+    li.MyCalLatestItem {
+        width: 98.5%;
+        margin: 0 0 20px 1.5%;
+    }
+    .KalenderShort .KalenderDate {
+        width: 100%;
+        padding: 1.475em 0.9375em;
+    }
+    .KalenderShort .KalenderBild {
+        width: 100%;
+        margin: 0;
+    }
+    .KalenderShort .KalenderInhalt {
+        float:left;
+        padding: 0.9375em;
+        width: calc(100% - 1px);
+    }
+    .startseite li.MyNewsLatestItem {
+        flex-basis: 98.5%;
+    }
+    .event-month {
+        padding-top: 0;
+    }
+    .main-news.cal .KalenderDate .event-date-block .event-month {
+        padding-top: 10px;
+    }
+    .event-date-block, .event-time {
+        margin-bottom: 0.075rem;
+    }
+}
+@media screen and (max-width:579px) {
+    .event-day:after {
+        content: ".";
+    }
+}
+@media screen and (min-width:768px) {
+    .startseite .eventcalendar .KalenderInhalt {
+        min-height: 125px;
+    }
+}
+.cal-headline {
+    margin: 0 15px;
+}
+.cal-headline .neos-nodetypes-headline {
+    margin-top: 15px;
+}
+
+/**** Datumsleiste *******/
+
+.main-news.cal ul {
+    margin-left: -40px;
+}
+.calender {
+    background-color: rgba(0,0,0,0.7);
+    margin-right: -15px;
+    margin-left: -20px;
+    width: calc(100% + 40px);
+    max-width: calc(100% + 40px);
+    margin-top: 15px;
+    padding: 0 50px;
+}
+.cal-year {
+    width: 100%;
+}
+.cal-calender {
+    width: 100%;
+}
+.event-calendar {
+    margin-left: auto;
+    margin-right: auto;
+    clear:both;
+}
+.event-calendar.cal-month {
+    height: 34px;
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.25em;
+    margin: 20px 0 10px 0;
+}
+.event-calendar.cal-day {
+    margin-bottom: 10px;
+}
+.event-calendar.cal-month .current,
+.event-calendar.cal-month .active,
+.event-calendar.cal-month .active.current {
+}
+.event-calendar.cal-month a {
+    color: #fff;
+}
+.event-calendar.cal-month .active,
+.event-calendar.cal-month .active a {
+    color: #FF9F2F;
+}
+.event-calendar.cal-month .active.current,
+.event-calendar.cal-month .active.current a {
+    color: #bbbbbb;
+}
+.event-calendar.cal-month .active.current:hover,
+.event-calendar.cal-month .active.current a:hover,
+.event-calendar.cal-month a:hover {
+    color: #FF9F2F;
+}
+.event-calendar.cal-month .slick-track div,
+.event-calendar.cal-month .slick-track .item {
+    display: block;
+    /* width: calc(100% / 12); */
+    width: 8%;
+    height: 32px;
+    line-height: 28px;
+    text-align: left;
+    font-size: 0.7em;
+    float: left;
+    min-height: 1px;
+    margin-right: 0.33333%;
+}
+.event-calendar.cal-month .slick-track div:last-of-type,
+.event-calendar.cal-month .slick-track .item:last-of-type {
+    margin-right: 0;
+}
+.event-calendar.cal-month a,
+.event-calendar.cal-month .active a {
+    height: 32px;
+    width: 100%;
+    border-bottom: 2px solid;
+}
+.event-calendar.cal-month a {
+    display: block;
+    height: 32px;
+    line-height: 28px;
+}
+.event-calendar.cal-day .item {
+    text-align: center;
+    width: calc(100% / 31);
+}
+.event-calendar.cal-day a {
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.event-calendar.cal-day .active .cal-day-c,
+.event-calendar.cal-day .active a .cal-day-c {
+    color: #fff;
+    background-color: #2E6880;
+    border-color: #2E6880;
+}
+.event-calendar.cal-day .cal-day-c {
+    margin-bottom: 0.5rem;
+    height: 32px;
+    font-size: 0.9rem;
+    line-height: 30px;
+    border: 2px solid #666666;
+    padding: 0 5px;
+}
+.event-calendar.cal-day .current .cal-day-c {
+    border-top-color: #fff;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    border-left-color: #fff;
+}
+.event-calendar.cal-day .current.active .cal-day-c,
+.event-calendar.cal-day .current.active a .cal-day-c {
+    color: #2E6880;
+    background-color: #fff;
+    border-color: #fff;
+}
+.event-calendar.cal-day. #weekDay30.inactive.item.current.slick-slide.slick-current.slick-active a#A30.linkInactive p.cal-day-c,
+.event-calendar.cal-day .active.current a .cal-day-c,
+.event-calendar.cal-day .active.current .cal-day-c {
+    color: #2E6880;
+    background-color: #fff;
+    border-color: #fff;
+}
+.event-calendar.cal-day .cal-day-c,
+.event-calendar.cal-day .cal-day-w {
+    margin-right: 4px;
+}
+.event-calendar.cal-day .cal-day-w {
+    display: block;
+    padding-bottom: 0.375rem;
+    font-size: 0.875rem;
+    color: #bbbbbb;
+}
+.event-calendar.cal-day .active.current .cal-day-w {
+    color: #ffffff;
+}
+.event-calendar.cal-day .cal-day-weekend {
+    margin: 0 6px 0 2px;
+    border-bottom: 1px solid;
+    font-size: 0.875rem;
+}
+.event-calendar.cal-day a .cal-day-weekend {
+    color: #fff;
+}
+.event-calendar .linkInactive {
+    cursor: default;
+    color: #fff;
+}
+@media screen and (max-width:1199px) {
+    .cal-calender .slick-list.draggable {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    .event-calendar.cal-month .slick-track,
+    .event-calendar.cal-day .slick-track {
+        overflow: hidden;
+        width: 1135px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .calender {
+        margin-right: -7px;
+        margin-left: -7px;
+        max-width: calc(100% + 14px);
+        padding: 0 30px;
+    }
+    .main-news.cal ul {
+        margin-left: -35px;
+        width: calc(100% + 30px);
+    }
+    .main-news.cal li.MyList-item {
+        width: 100%;
+    }
+    .event-calendar.cal-month,
+    .event-calendar.cal-day {
+        margin: 25px 0 25px 0;
+    }
+    .event-calendar.cal-day .cal-day-c {
+        line-height: 24px;
+    }
+}
+.event-info {
+    width: 100%;
+    padding-right: 30px;
+    margin: 15px 0;
+}
+.main-calendar .b-ads.anzeige {
+    width: 100%;
+    padding-right: 15px;
+}

@@ -1,0 +1,140 @@
+'ISP.Calender:Event':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'Veranstaltungs-Seite'
+    inspector:
+      groups:
+        general:
+          label: General
+          icon: 'icon-exchange'
+          position: 1200
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'          
+  properties:
+    previewPicture:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Vorschaubild
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+          position: 0
+          editorOptions:
+            features:
+              resize: TRUE
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter title here'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+    isWholeDay:
+      type: boolean
+      ui:
+        label: 'ganztägig'
+        inspector:
+          group: general
+    eventDate:
+      type: DateTime
+      defaultValue: 'now'
+      ui:
+        label: 'Veranstaltungs-Datum'
+        inspector:
+          group: 'general'
+          position: 5
+          editorOptions:
+            format: 'd-m-Y H:i'
+            minuteStep: '1'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    eventEndDate:
+      type: DateTime
+      defaultValue: ''
+      ui:
+        label: 'Veranstaltungs-Ende'
+        inspector:
+          group: 'general'
+          position: 6
+          editorOptions:
+            format: 'd-m-Y H:i'
+            minuteStep: '1'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    locLink:
+      type: string
+      ui:
+        label: Link zur Kartenansicht
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+    place:
+      type: string
+      defaultValue: 'Hier Ort eingeben...'
+      ui:
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Hier Ort eingeben...'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+    categories:
+      type: references
+      ui:
+        label: 'Monat'
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['ISP.Calender:Month']
+'ISP.Calender:Month':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'Monat'
+    inspector:
+      groups:
+        general:
+          label: General
+          icon: 'icon-exchange'
+          position: 1100
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'                  
