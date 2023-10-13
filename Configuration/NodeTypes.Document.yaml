@@ -135,6 +135,17 @@
           label: General
           icon: 'icon-exchange'
           position: 1100
+        advanced:
+          label: Advanced
+          icon: 'icon-exchange'
+          position: 1300            
   childNodes:
     main:
-      type: 'Neos.Neos:ContentCollection'                  
+      type: 'Neos.Neos:ContentCollection'      
+  properties:
+    leapYear:
+      type: boolean
+      ui:
+        label: 'Schaltjahr'
+        inspector:
+          group: 'advanced'        
