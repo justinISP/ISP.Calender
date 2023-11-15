@@ -3,6 +3,13 @@ Neos:
     fusion:
       autoInclude:
         'ISP.Calender': TRUE
+  Neos:
+    nodeTypes:
+      groups:
+        calender:
+          position: 280
+          label: 'Kalender'
+          collapsed: true  
 ISP:
   Calender:
     calenderID: '#160bbc58-2130-4677-92e3-ff50bc96edd1'        
