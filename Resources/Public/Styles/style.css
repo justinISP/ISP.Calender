@@ -570,6 +570,7 @@ ul li.MyList-item {
     z-index: 1001;
     }
 #loader-wrapper .loader-section {
+    opacity: 0
     position: fixed;
     top: 0;
     width: 51%;
@@ -613,7 +614,7 @@ ul li.MyList-item {
     bottom: 5px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: #FF9F2F;
+    border-top-color: #20414F;
     -webkit-animation: spin 3s linear infinite;
             animation: spin 3s linear infinite;
     }
