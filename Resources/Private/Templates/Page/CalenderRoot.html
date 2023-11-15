@@ -14,7 +14,7 @@
     <f:section name="body">
       <f:if condition="{neos:rendering.inBackend()}">
         <f:then>
-          <div id="calRootBackend">
+          <div class="calRootBackend">
             <p>This is a shortcut to the current month ⇨ <neos:link.node node="{url}">{targetconverted.nodeData.properties.title} {parent.0.nodeData.properties.title}</neos:link.node></p>
           </div>
         </f:then>
