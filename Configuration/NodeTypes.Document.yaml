@@ -1,9 +1,17 @@
+'ISP.Calender:CalenderRoot':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-share'
+    label: 'CalenderRoot'
+    group: 'calender'
 'ISP.Calender:Event':
   superTypes:
     'Neos.Neos:Document': true
   ui:
     icon: 'icon-file'
     label: 'Veranstaltungs-Seite'
+    group: 'calender'
     inspector:
       groups:
         general:
@@ -129,6 +137,7 @@
   ui:
     icon: 'icon-file'
     label: 'Monat'
+    group: 'calender
     inspector:
       groups:
         general:
