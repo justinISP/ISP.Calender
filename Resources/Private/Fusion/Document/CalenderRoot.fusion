@@ -1,0 +1,23 @@
+prototype(ISP.Calender:CalenderRoot) < prototype(Neos.Neos:Page) {
+
+    head {
+        stylesheets.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.Calender/Private/Templates/Page/CalenderRoot.html'
+            sectionName = 'stylesheets'
+            parent = ${q(site).find('[instanceof Neos.Neos:Shortcut]').filter('[title = "' + Date.format(Date.today().timestamp, 'Y') + '"]').get()}
+            targetconverted = ${q(this.parent).children('[instanceof ISP.Calender:Month]').filter('[title = "' + Date.formatCldr(Date.now().timestamp, 'MMMM', 'de') + '"]').get(0)}
+            url = ${'node://' + q(this.targetconverted).property('_identifier')}
+            url.@process.convertUris = Neos.Neos:ConvertUris
+        }
+    }
+
+    body {
+        templatePath = 'resource://ISP.Calender/Private/Templates/Page/CalenderRoot.html'
+
+        parent = ${q(site).find('[instanceof Neos.Neos:Shortcut]').filter('[title = "' + Date.format(Date.today().timestamp, 'Y') + '"]').get()}
+        targetconverted = ${q(this.parent).children('[instanceof ISP.Calender:Month]').filter('[title = "' + Date.formatCldr(Date.now().timestamp, 'MMMM', 'de') + '"]').get(0)}
+        url = ${'node://' + q(this.targetconverted).property('_identifier')}
+        url.@process.convertUris = Neos.Neos:ConvertUris
+        sectionName = 'body'
+    }    
+}
