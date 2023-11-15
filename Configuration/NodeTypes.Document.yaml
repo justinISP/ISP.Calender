@@ -137,7 +137,7 @@
   ui:
     icon: 'icon-file'
     label: 'Monat'
-    group: 'calender
+    group: 'calender'
     inspector:
       groups:
         general:
