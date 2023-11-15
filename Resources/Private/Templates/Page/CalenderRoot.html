@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace fusion=Neos\Fusion\ViewHelpers}
+<html>
+  <head>
+    <f:section name="stylesheets">
+      <f:if condition="{neos:rendering.live()}">
+        <meta http-equiv="refresh" content="1; URL={url}">
+      </f:if>
+      <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/style.css', package: 'ISP.Calender')}" media="all" />
+    </f:section>
+  </head>
+  <body>
+    <f:section name="body">
+      <f:if condition="{neos:rendering.inBackend()}">
+        <f:then>
+          <div id="calRootBackend">
+            <p>This is a shortcut to the current month ⇨ <neos:link.node node="{url}">{targetconverted.nodeData.properties.title} {parent.0.nodeData.properties.title}</neos:link.node></p>
+          </div>
+        </f:then>
+        <f:else>
+          
+              <div id="loader-wrapper">
+                  <div id="loader"></div>
+                  <div class="loader-section section-left"></div>
+                  <div class="loader-section section-right"></div>
+              </div>
+          
+        </f:else>
+      </f:if>
+    </f:section>
+  </body>
+</html>
