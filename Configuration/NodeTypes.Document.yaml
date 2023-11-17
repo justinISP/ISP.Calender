@@ -64,6 +64,7 @@
         label: 'ganztägig'
         inspector:
           group: general
+          position: 1
     eventDate:
       type: DateTime
       defaultValue: 'now'
@@ -71,7 +72,7 @@
         label: 'Veranstaltungs-Datum'
         inspector:
           group: 'general'
-          position: 5
+          position: 2
           editorOptions:
             format: 'd-m-Y H:i'
             minuteStep: '1'
@@ -84,19 +85,12 @@
         label: 'Veranstaltungs-Ende'
         inspector:
           group: 'general'
-          position: 6
+          position: 3
           editorOptions:
             format: 'd-m-Y H:i'
             minuteStep: '1'
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
-    locLink:
-      type: string
-      ui:
-        label: Link zur Kartenansicht
-        reloadIfChanged: true
-        inspector:
-          group: 'general'
     place:
       type: string
       defaultValue: 'Hier Ort eingeben...'
@@ -129,6 +123,7 @@
         label: 'Monat'
         inspector:
           group: 'general'
+          position: 5
           editorOptions:
             nodeTypes: ['ISP.Calender:Month']
 'ISP.Calender:Month':
